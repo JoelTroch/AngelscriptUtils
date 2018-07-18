@@ -69,7 +69,7 @@ if( !( Test-Path dependencies -pathType container ) )
 	# dependencies/dependency_name/build
 	# dependencies/dependency_name/install
 
-	# SpdLog begin
+	# SpdLog BEGIN
 	New-Item spdlog -type directory
 	cd spdlog
 
@@ -90,12 +90,12 @@ if( !( Test-Path dependencies -pathType container ) )
 	Remove-Item share/* -recurse
 
 	cd $dependencies_dir
-	# SpdLog End
+	# SpdLog END
 
 	# Restore to old path
 	cd $ROOT_DIR
 
-	# Angelscript begin
+	# Angelscript BEGIN
 	New-Item angelscript -type directory
 	cd angelscript
 
@@ -116,7 +116,7 @@ if( !( Test-Path dependencies -pathType container ) )
 	Remove-Item share/* -recurse
 
 	cd $dependencies_dir
-	# Angelscript End
+	# Angelscript END
 
 	# Restore to old path
 	cd $ROOT_DIR
