@@ -20,6 +20,7 @@ before_build:
   - ps: wget https://cmake.org/files/v3.12/cmake-3.12.0-win64-x64.zip -OutFile cmake.zip
   - ps: Write-Host "=== (2/4) Installing CMake ===" -foregroundcolor green
   - cmd: 7z x cmake.zip -o"." -y
+  - ps: Rename-Item cmake-3.12.9-win64-x64 cmake_appveyor
   # Handle dependencies
   - ps: .\appveyor_install_dependencies.ps1
   # Create the build directory and the install directories
@@ -30,7 +31,7 @@ before_build:
 build_script:
   - cd build
   - ps: Write-Host "===  (4/4) Building ===" -foregroundcolor green
-  - ..\cmake-3.12.0-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -G"Visual Studio 14 2015" ..
+  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -G"Visual Studio 14 2015" ..
   - msbuild AngelscriptUtils.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # If one job fail, mark the build as failed
