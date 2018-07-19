@@ -17,7 +17,7 @@ environment:
 before_build:
   # Use latest version of CMake
   - ps: Write-Host "=== (1/4) Downloading CMake 3.12.0 ZIP for Windows 64 bits ===" -foregroundcolor green
-  - ps: wget https://cmake.org/files/v3.6/cmake-3.12.0-win64-x64.zip -OutFile cmake.zip
+  - ps: wget https://cmake.org/files/v3.12/cmake-3.12.0-win64-x64.zip -OutFile cmake.zip
   - ps: Write-Host "=== (2/4) Installing CMake ===" -foregroundcolor green
   - cmd: 7z x cmake.zip -o"." -y
   # Handle dependencies
