@@ -31,7 +31,7 @@ before_build:
 build_script:
   - cd build
   - ps: Write-Host "===  (4/4) Building ===" -foregroundcolor green
-  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -DAngelscript_DIR=..\angelscript\install\cmake -G"Visual Studio 14 2015" ..
+  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -DAngelscript_DIR="C:\projects\angelscriptutils\angelscript\build\install\cmake" -G"Visual Studio 14 2015" ..
   - msbuild AngelscriptUtils.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # If one job fail, mark the build as failed
