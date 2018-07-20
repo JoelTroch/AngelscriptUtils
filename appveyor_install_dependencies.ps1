@@ -92,9 +92,6 @@ if( !( Test-Path dependencies -pathType container ) )
 	cd $dependencies_dir
 	# spdlog END
 
-	# Restore to old path
-	cd $ROOT_DIR
-
 	# Angelscript BEGIN
 	New-Item angelscript -type directory
 	cd angelscript
