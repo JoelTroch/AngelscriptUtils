@@ -102,7 +102,8 @@ if( !( Test-Path dependencies -pathType container ) )
 	Write-Host "[Dependency] Building Angelscript" -foregroundcolor green
 
 	# Acquire files
-	wget "http://www.angelcode.com/angelscript/sdk/files/angelscript_$ANGELSCRIPT_VERSION.zip" -OutFile angelscript.zip
+	#wget "http://www.angelcode.com/angelscript/sdk/files/angelscript_$ANGELSCRIPT_VERSION.zip" -OutFile angelscript.zip
+	wget "http://shepard62fr.free.fr/angelscript-r2521-for-asutils.zip" -OutFile angelscript.zip
 	cmd /c 7z x angelscript.zip -o"." -y
 
 	# Override the compiler settings to use a static runtime, so linking with HLE doesn't cause problems
