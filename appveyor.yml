@@ -29,9 +29,27 @@ before_build:
   - md install
 
 build_script:
+  - cd dependencies
+  - dir
+  - cd angelscript
+  - dir
+  - cd install
+  - dir
+  - cd lib
+  - dir
+  - cd cmake
+  - dir
+  - cd Angelscript
+  - dir
+  - cd ..
+  - cd ..
+  - cd ..
+  - cd ..
+  - cd ..
+  - cd ..
   - cd build
   - ps: Write-Host "=== (5/5) Building ===" -foregroundcolor green
-  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=../install -DAngelscript_DIR=../dependencies/angelscript/install/lib/cmake/Angelscript -G"Visual Studio 14 2015" ..
+  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=../install -DAngelscript_DIR=../dependencies/angelscript/install/lib/cmake/Angelscript -Dspdlog_DIR=../dependencies/spdlog/install/lib/cmake/spdlog -G"Visual Studio 14 2015" ..
   - msbuild AngelscriptUtils.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # If one job fail, mark the build as failed
