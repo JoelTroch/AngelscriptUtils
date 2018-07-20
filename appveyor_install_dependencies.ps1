@@ -106,7 +106,7 @@ if( !( Test-Path dependencies -pathType container ) )
 	cmd /c 7z x angelscript.zip -o"." -y
 
 	# Override the compiler settings to use a static runtime, so linking with HLE doesn't cause problems
-	CMake_GenerateBuildAndInstall( @( "-DBUILD_SHARED_LIBS=OFF", "-DCMAKE_USER_MAKE_RULES_OVERRIDE='$ROOT_DIR/cmake/c_flags_overrides.cmake'", "-DCMAKE_USER_MAKE_RULES_OVERRIDE_CXX='$ROOT_DIR/cmake/cxx_flags_overrides.cmake'" ), "sdk/angelscript/projects/cmake" )
+	CMake_GenerateBuildAndInstall( @( "-DBUILD_SHARED_LIBS=OFF", "-DCMAKE_USER_MAKE_RULES_OVERRIDE='$ROOT_DIR/cmake/c_flags_overrides.cmake'", "-DCMAKE_USER_MAKE_RULES_OVERRIDE_CXX='$ROOT_DIR/cmake/cxx_flags_overrides.cmake'" ) "sdk/angelscript/projects/cmake" )
 
 	cd install
 
