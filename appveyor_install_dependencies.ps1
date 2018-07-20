@@ -8,7 +8,7 @@ Set-Variable COMPILER_TOOLSET -option Constant -value ( [string] $Env:COMPILER_T
 Set-Variable ROOT_DIR -option Constant -value ( [string] ( ( Get-Item -Path ".\" -Verbose ).FullName ) )
 Set-Variable CONFIGURATION -option Constant -value ( [string] $Env:CONFIGURATION )
 
-# Dependency configuration
+# Dependencies configuration
 Set-Variable SPDLOG_VERSION -option Constant -value ( [string] "1.x" )
 Set-Variable ANGELSCRIPT_VERSION -option Constant -value ( [string] "2.32.0" )
 
@@ -69,11 +69,11 @@ if( !( Test-Path dependencies -pathType container ) )
 	# dependencies/dependency_name/build
 	# dependencies/dependency_name/install
 
-	# SpdLog BEGIN
+	# spdlog BEGIN
 	New-Item spdlog -type directory
 	cd spdlog
 
-	Write-Host "[Dependency] Building SpdLog" -foregroundcolor green
+	Write-Host "[Dependency] Building spdlog" -foregroundcolor green
 
 	# Acquire files
 	wget "https://github.com/gabime/spdlog/archive/v$SPDLOG_VERSION.zip" -OutFile spdlog.zip
@@ -90,7 +90,7 @@ if( !( Test-Path dependencies -pathType container ) )
 	Remove-Item share/* -recurse
 
 	cd $dependencies_dir
-	# SpdLog END
+	# spdlog END
 
 	# Restore to old path
 	cd $ROOT_DIR

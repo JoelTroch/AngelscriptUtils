@@ -9,29 +9,30 @@ configuration:
   - Debug
   - Release
 
-# Build with all those possible configurations
+# Build with this configuration
 environment:
   COMPILER_VERSION: Visual Studio 14 2015
   COMPILER_TOOLSET: v140_xp
 
 before_build:
   # Use latest version of CMake
-  - ps: Write-Host "=== (1/4) Downloading CMake 3.12.0 ZIP for Windows 64 bits ===" -foregroundcolor green
+  - ps: Write-Host "=== (1/5) Downloading CMake 3.12.0 ZIP for Windows 64 bits ===" -foregroundcolor green
   - ps: wget https://cmake.org/files/v3.12/cmake-3.12.0-win64-x64.zip -OutFile cmake.zip
-  - ps: Write-Host "=== (2/4) Installing CMake ===" -foregroundcolor green
+  - ps: Write-Host "=== (2/5) Installing CMake ===" -foregroundcolor green
   - cmd: 7z x cmake.zip -o"." -y
   - ps: Rename-Item cmake-3.12.0-win64-x64 cmake_appveyor
   # Handle dependencies
   - ps: .\appveyor_install_dependencies.ps1
   # Create the build directory and the install directories
-  - ps: Write-Host "=== (3/4) Creating build and install directories ===" -foregroundcolor green
+  - ps: Write-Host "=== (4/5) Creating build and install directories ===" -foregroundcolor green
   - md build
   - md install
 
 build_script:
+  - ps: dir
   - cd build
-  - ps: Write-Host "===  (4/4) Building ===" -foregroundcolor green
-  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -DAngelscript_DIR="C:\projects\angelscriptutils\angelscript\install\cmake" -G"Visual Studio 14 2015" ..
+  - ps: Write-Host "=== (5/5) Building ===" -foregroundcolor green
+  - ..\cmake_appveyor\bin\cmake.exe -DCMAKE_INSTALL_PREFIX=..\install -DAngelscript_DIR=..\angelscript\install\cmake -G"Visual Studio 14 2015" ..
   - msbuild AngelscriptUtils.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # If one job fail, mark the build as failed
